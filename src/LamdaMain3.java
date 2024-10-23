@@ -22,9 +22,7 @@ public class LamdaMain3 {
 			return b;
 		};
 		
-		System.out.println(cal2.cal('A','a'));
-		
-		
+		System.out.println(cal2.cal('A','a'));		
 		
 	}
 }
