@@ -1,4 +1,5 @@
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
@@ -13,6 +14,21 @@ public class LamdaConsumerMain {
 	public static void main(String[] args) {
 		
 		Consumer<String> c = (String s)->{ System.out.println(s);};
+		
+		
+		List<String> list = new ArrayList<String>();
+		list.add("사과");
+		list.add("배");
+		list.add("키위");
+		
+		list.forEach(c);
+		
+		list.forEach((s)->System.out.println(s));		
+		list.forEach((s)->System.out.println(s.length()));
+			
+		
+		//////////////////////////////////////////////////////////////////
+		
 		
 		c.accept("안녕하세요");
 		c.accept("사과");
@@ -47,5 +63,7 @@ public class LamdaConsumerMain {
 		fileDeleter.accept("b.txt");
 		
 	}
+	
+	
 	
 }
