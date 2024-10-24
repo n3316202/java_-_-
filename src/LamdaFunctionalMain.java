@@ -1,38 +1,55 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
+import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 
-//Supplier<T> 공급하다
-//T get();
+//Function<T,R>
+// R apply(T)
 
-//Supplier 인터페이스를 통하여 로또 번호 6개를 리턴하시오.
-
+class Student{
+	int kor;
+	int eng;
+	int math;
+	String name;
+	
+	public Student(int kor, int eng, int math, String name) {
+		this.kor = kor;
+		this.eng = eng;
+		this.math = math;
+		this.name = name;		
+	}
+}
 
 public class LamdaFunctionalMain {
-
 	public static void main(String[] args) {
-		Supplier<String> helloSupplier = () -> {
-				return "hello";
+		
+		List<Student> sArr = new ArrayList<Student>();
+		sArr.add(new Student(90,80,70,"홍길동"));
+		sArr.add(new Student(90,60,70,"홍길순"));
+		sArr.add(new Student(90,60,70,"홍말자"));		
+		
+		
+		Function<Student,Integer> sFun = (Student s)->{
+			return s.kor + s.eng + s.math;
 		};
 		
-		System.out.println(helloSupplier.get());
+		Function<Student,Double> avgFun = (Student s)->{
+			return (s.kor + s.eng + s.math) / 3.0;
+		};
 		
-		Supplier<Set<Integer>> lotto = () -> {
-			
-			Set<Integer> lottoSet = new TreeSet<>();
-			final int LOTTO = 6;
-			
-			while(lottoSet.size() < LOTTO) {
-				int num = (int) ((Math.random() * 45) +1); 
-				lottoSet.add(num);
-			}			
-			return lottoSet;			
-		};	
+		for (Student student : sArr) {
+			System.out.println("총점" + sFun.apply(student) +  "평균" + avgFun.apply(student));
+		}	
 		
-		System.out.println(lotto.get());		
+		
+		Function<String,Integer> fun = s -> s.length();		
+		System.out.println(fun.apply("안녕하세요"));
+		
+	
 	}	
 }
