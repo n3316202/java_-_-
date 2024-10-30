@@ -48,8 +48,6 @@ public class DoubleColoneMain {
         
         list.stream().map(element -> element.toUpperCase())
                      .forEach(System.out::println);
-        
-        System.out.println("AAA");
 					
 	}	
 }
